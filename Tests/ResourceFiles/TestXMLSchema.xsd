@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="localizedStrings">
+		<xs:annotation>
+			<xs:documentation>
+				Обязательный корневой элемент localizedStrings.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" name="locale" type="locale" >
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="locale">
+		<xs:annotation>
+			<xs:documentation>
+				Список локализованных текстов.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="text" type="text" >
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="name" type="CultureName" use="required">
+			<xs:annotation>
+				<xs:documentation>
+					Имя культуры (CultureInfo.Name).
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="text">
+		<xs:annotation>
+			<xs:documentation>
+				Локализованный текст.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="id" type="GUID" use="required">
+					<xs:annotation>
+						<xs:documentation>
+							Идентификатор текста (GUID).
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:simpleType name="GUID">
+		<xs:annotation>
+			<xs:documentation>
+				Представление типа GUID.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="CultureName">
+		<xs:annotation>
+			<xs:documentation>
+				Тип для представления имени культуры (CultureInfo.Name).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[a-z]{2,3}(-[a-zA-Z]{2,4})?(-[A-Z]{2})?" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

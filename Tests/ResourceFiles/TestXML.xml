@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizedStrings>
+	<locale name="ru-RU">
+		<text id="6c2c210c-8fd6-449d-980b-97ad6f6362e7">Сервис.</text>
+		<text id="a0da18b6-9a62-4027-9d05-79d71686aad5">Интересно.</text>
+		<text id="db4bb826-41cd-4dcc-b352-e56e54566c0e">Строка только на русском.</text>
+		<text id="a15aa672-3846-4e84-a644-b99feee55205">Есть во всех источниках (xml файл).</text>
+	</locale>
+	<locale name="en-US">
+		<text id="6c2c210c-8fd6-449d-980b-97ad6f6362e7">Service.</text>
+		<text id="a0da18b6-9a62-4027-9d05-79d71686aad5">Interesting.</text>
+		<text id="54effa47-12c2-4363-bb4e-884a8f752108">Two localizations for one string (en-US).</text>
+	</locale>
+	<locale name="tr-TR">
+		<text id="6c2c210c-8fd6-449d-980b-97ad6f6362e7">Servisi.</text>
+	</locale>
+	<locale name = "es-ES">
+		<text id="49e65dfd-5896-4428-bf44-c14fc250f214">Identificador unico.</text>
+	</locale>
+	<locale name = "ar-AE">
+		<text id="54effa47-12c2-4363-bb4e-884a8f752108">Two localizations for one string (ar-AE).</text>
+	</locale>
+</localizedStrings>
