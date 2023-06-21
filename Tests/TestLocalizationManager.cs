@@ -25,7 +25,9 @@ namespace Tests
 
         //Так как тесты больше для демонстрации работоспособности системы - используются реализации IRepository, а не замоканные аналоги. 
 
-        //Один источник данных, ноль строк по идентификатору.
+        /// <summary>
+        /// Один источник данных, ноль строк по идентификатору.
+        /// </summary>
         [Test]
         public void OneSourceNullStrings()
         {
@@ -35,7 +37,9 @@ namespace Tests
             Assert.That(ruString, Is.Null);
         }
 
-        //Один источник данных, одна строка по идентификатору, есть подходящая культура.
+        /// <summary>
+        /// Один источник данных, одна строка по идентификатору, есть подходящая культура.
+        /// </summary>
         [Test]
         public void OneSourceOneStringHasSuitableCulture()
         {
@@ -45,7 +49,9 @@ namespace Tests
             Assert.That(esString, Is.EqualTo("Identificador unico."));
         }
 
-        //Один источник данных, одна строка по идентификатору, нет подходящей культуры.
+        /// <summary>
+        /// Один источник данных, одна строка по идентификатору, нет подходящей культуры.
+        /// </summary>
         [Test]
         public void OneSourceOneStringNoSuitableCulture()
         {
@@ -55,7 +61,9 @@ namespace Tests
             Assert.That(frString, Is.Null);
         }
 
-        //Один источник данных, одна строка по идентификатору, много культур.
+        /// <summary>
+        /// Один источник данных, одна строка по идентификатору, много культур.
+        /// </summary>
         [Test]
         public void OneSourceOneStringMultipleCultures()
         {
@@ -67,7 +75,9 @@ namespace Tests
             Assert.That(enString, Is.EqualTo("Service."));
         }
 
-        //Несколько источников данных, ноль строк по идентификатору.
+        /// <summary>
+        /// Несколько источников данных, ноль строк по идентификатору.
+        /// </summary>
         [Test]
         public void MultipleSourcesNullStrings()
         {
@@ -78,7 +88,9 @@ namespace Tests
             Assert.That(ruString, Is.Null);
         }
 
-        //Несколько источников данных, одна строка по идентификатору в первом источнике.
+        /// <summary>
+        /// Несколько источников данных, одна строка по идентификатору в первом источнике.
+        /// </summary>
         [Test]
         public void MultipleSourcesOneStringFirstSource()
         {
@@ -89,7 +101,9 @@ namespace Tests
             Assert.That(esString, Is.EqualTo("Identificador unico."));
         }
 
-        //Несколько источников данных, одна строка по идентификатору в последнем источнике.
+        /// <summary>
+        /// Несколько источников данных, одна строка по идентификатору в последнем источнике.
+        /// </summary>
         [Test]
         public void MultipleSourcesOneStringLastSource()
         {
@@ -100,8 +114,10 @@ namespace Tests
             Assert.That(ruString, Is.EqualTo("Уникальный идентификатор."));
         }
 
-        //Несколько источников данных, в каждом источнике есть локализация по идентификатору,
-        //должна выбраться строка из первого по приоритету добавления источника.
+        /// <summary>
+        /// Несколько источников данных, в каждом источнике есть локализация по идентификатору,
+        /// должна выбраться строка из первого по приоритету добавления источника.
+        /// </summary>
         [Test]
         public void MultipleSourcesMultipleStrings()
         {
@@ -112,7 +128,10 @@ namespace Tests
             Assert.That(ruString, Is.EqualTo("Есть во всех источниках (xml файл)."));
         }
 
-        //Один источник данных, две локализации одной строки, одна из них с текущей культурой потока, вторая нет. Запрос строки без культуры.
+        /// <summary>
+        /// Один источник данных, две локализации одной строки, одна из них с текущей культурой потока, вторая нет.
+        /// Запрос строки без культуры.
+        /// </summary>
         [Test]
         public void OneSourcesMultipleStringsCurrentThreadCulture()
         {
@@ -125,7 +144,9 @@ namespace Tests
             Assert.That(ruString, Is.EqualTo("Two localizations for one string (ar-AE)."));
         }
 
-        //Один источник данных. Должен вернуться true.
+        /// <summary>
+        /// Один источник данных. Должен вернуться true.
+        /// </summary>
         [Test]
         public void OneSourceReturnsTrueOnAdd()
         {
@@ -134,7 +155,9 @@ namespace Tests
             Assert.That(localizationManager.RegisterSource(xmlRepo), Is.True);
         }
 
-        //Два одинаковых источника данных. Должен вернуться false при попытке добавления второго источника.
+        /// <summary>
+        /// Два одинаковых источника данных. Должен вернуться false при попытке добавления второго источника.
+        /// </summary>
         [Test]
         public void TwoEqualSourcesReturnFalseOnAdd()
         {
@@ -144,7 +167,9 @@ namespace Tests
             Assert.That(localizationManager.RegisterSource(xmlRepo), Is.False);
         }
 
-        //Два источника данных одного типа, но не равные. Должен вернуться true при попытке добавления второго источника.
+        /// <summary>
+        /// Два источника данных одного типа, но не равные. Должен вернуться true при попытке добавления второго источника.
+        /// </summary>
         [Test]
         public void TwoNonEqualSameTypeSourcesReturnTrueOnAdd()
         {
@@ -155,8 +180,9 @@ namespace Tests
             Assert.That(localizationManager.RegisterSource(xmlRepo2), Is.True);
         }
 
-        //todo может вообще все тесты замокать?..
-        // тест на exception.
+        /// <summary>
+        /// Проверка выброса исключения.
+        /// </summary>
         [Test]
         public void OneSourceThrowsException()
         {

@@ -15,6 +15,10 @@ namespace BusinessLogic
         private readonly List<IRepository> _sourceList = new();
         private readonly ILogger<LocalizationManager> _logger;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="LocalizationManager"/>.
+        /// </summary>
+        /// <param name="logger">Логгер.</param>
         public LocalizationManager(ILogger<LocalizationManager> logger)
         {
             _logger = logger;
