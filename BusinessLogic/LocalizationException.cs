@@ -2,16 +2,31 @@
 
 namespace BusinessLogic
 {
+    /// <summary>
+    /// Исключение, которое транслируется при ошибках в <see cref="ILocalizationManager"/>.
+    /// </summary>
     public class LocalizationException : Exception
     {
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="LocalizationException"/>.
+        /// </summary>
         public LocalizationException()
         {
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="LocalizationException"/>.
+        /// </summary>
+        /// <param name="message">Сообщение об ошибке.</param>
         public LocalizationException(string? message) : base(message)
         {
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="LocalizationException"/>.
+        /// </summary>
+        /// <param name="message">Сообщение об ошибке.</param>
+        /// <param name="innerException">Исключение, которое является причиной текущего исключения.</param>
         public LocalizationException(
             string message,
             Exception innerException)
@@ -19,6 +34,12 @@ namespace BusinessLogic
         {
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="LocalizationException"/>.
+        /// </summary>
+        /// <param name="id">Идентификатор строки локализации.</param>
+        /// <param name="cultureInfo">Культура строки локализации.</param>
+        /// <param name="innerException">Исключение, которое является причиной текущего исключения.</param>
         public LocalizationException(
             Guid id,
             CultureInfo? cultureInfo,

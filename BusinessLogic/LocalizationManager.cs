@@ -33,6 +33,8 @@ namespace BusinessLogic
         /// <returns>Найденная в одном из источников (согласно приоритету) строка либо null, если строки нет ни в одном из источников.</returns>
         public string? GetString(Guid stringId, CultureInfo? cultureInfo = null)
         {
+            //Рассматривала вариант обертки возвращаемого значения в класс с хранением id, культуры и значения,
+            //но в поставноке задачи метод должен "возвращать значение", поэтому - строка.
             try
             {
                 foreach (var source in _sourceList)
