@@ -23,10 +23,10 @@ namespace Tests
             _LocalizationManagerLoggerMock = new Mock<ILogger<LocalizationManager>>().Object;
         }
 
-        //Так как тесты больше для демонстрации работоспособности системы - используются реализации IRepository, а не замоканные аналоги. 
+        //РўР°Рє РєР°Рє С‚РµСЃС‚С‹ Р±РѕР»СЊС€Рµ РґР»СЏ РґРµРјРѕРЅСЃС‚СЂР°С†РёРё СЂР°Р±РѕС‚РѕСЃРїРѕСЃРѕР±РЅРѕСЃС‚Рё СЃРёСЃС‚РµРјС‹ - РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ СЂРµР°Р»РёР·Р°С†РёРё IRepository, Р° РЅРµ Р·Р°РјРѕРєР°РЅРЅС‹Рµ Р°РЅР°Р»РѕРіРё. 
 
         /// <summary>
-        /// Один источник данных, ноль строк по идентификатору.
+        /// РћРґРёРЅ РёСЃС‚РѕС‡РЅРёРє РґР°РЅРЅС‹С…, РЅРѕР»СЊ СЃС‚СЂРѕРє РїРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ.
         /// </summary>
         [Test]
         public void OneSourceNullStrings()
@@ -38,7 +38,7 @@ namespace Tests
         }
 
         /// <summary>
-        /// Один источник данных, одна строка по идентификатору, есть подходящая культура.
+        /// РћРґРёРЅ РёСЃС‚РѕС‡РЅРёРє РґР°РЅРЅС‹С…, РѕРґРЅР° СЃС‚СЂРѕРєР° РїРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ, РµСЃС‚СЊ РїРѕРґС…РѕРґСЏС‰Р°СЏ РєСѓР»СЊС‚СѓСЂР°.
         /// </summary>
         [Test]
         public void OneSourceOneStringHasSuitableCulture()
@@ -50,7 +50,7 @@ namespace Tests
         }
 
         /// <summary>
-        /// Один источник данных, одна строка по идентификатору, нет подходящей культуры.
+        /// РћРґРёРЅ РёСЃС‚РѕС‡РЅРёРє РґР°РЅРЅС‹С…, РѕРґРЅР° СЃС‚СЂРѕРєР° РїРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ, РЅРµС‚ РїРѕРґС…РѕРґСЏС‰РµР№ РєСѓР»СЊС‚СѓСЂС‹.
         /// </summary>
         [Test]
         public void OneSourceOneStringNoSuitableCulture()
@@ -62,7 +62,7 @@ namespace Tests
         }
 
         /// <summary>
-        /// Один источник данных, одна строка по идентификатору, много культур.
+        /// РћРґРёРЅ РёСЃС‚РѕС‡РЅРёРє РґР°РЅРЅС‹С…, РѕРґРЅР° СЃС‚СЂРѕРєР° РїРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ, РјРЅРѕРіРѕ РєСѓР»СЊС‚СѓСЂ.
         /// </summary>
         [Test]
         public void OneSourceOneStringMultipleCultures()
@@ -70,13 +70,13 @@ namespace Tests
             var localizationManager = new LocalizationManager(_LocalizationManagerLoggerMock);
             localizationManager.RegisterSource(CreateCorrectXmlRepository(FilledXmlFileName));
             var ruString = localizationManager.GetString(Guid.Parse("6c2c210c-8fd6-449d-980b-97ad6f6362e7"), new CultureInfo("ru-RU"));
-            Assert.That(ruString, Is.EqualTo("Сервис."));
+            Assert.That(ruString, Is.EqualTo("РЎРµСЂРІРёСЃ."));
             var enString = localizationManager.GetString(Guid.Parse("6c2c210c-8fd6-449d-980b-97ad6f6362e7"), new CultureInfo("en-US"));
             Assert.That(enString, Is.EqualTo("Service."));
         }
 
         /// <summary>
-        /// Несколько источников данных, ноль строк по идентификатору.
+        /// РќРµСЃРєРѕР»СЊРєРѕ РёСЃС‚РѕС‡РЅРёРєРѕРІ РґР°РЅРЅС‹С…, РЅРѕР»СЊ СЃС‚СЂРѕРє РїРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ.
         /// </summary>
         [Test]
         public void MultipleSourcesNullStrings()
@@ -89,7 +89,7 @@ namespace Tests
         }
 
         /// <summary>
-        /// Несколько источников данных, одна строка по идентификатору в первом источнике.
+        /// РќРµСЃРєРѕР»СЊРєРѕ РёСЃС‚РѕС‡РЅРёРєРѕРІ РґР°РЅРЅС‹С…, РѕРґРЅР° СЃС‚СЂРѕРєР° РїРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ РІ РїРµСЂРІРѕРј РёСЃС‚РѕС‡РЅРёРєРµ.
         /// </summary>
         [Test]
         public void MultipleSourcesOneStringFirstSource()
@@ -102,7 +102,7 @@ namespace Tests
         }
 
         /// <summary>
-        /// Несколько источников данных, одна строка по идентификатору в последнем источнике.
+        /// РќРµСЃРєРѕР»СЊРєРѕ РёСЃС‚РѕС‡РЅРёРєРѕРІ РґР°РЅРЅС‹С…, РѕРґРЅР° СЃС‚СЂРѕРєР° РїРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ РІ РїРѕСЃР»РµРґРЅРµРј РёСЃС‚РѕС‡РЅРёРєРµ.
         /// </summary>
         [Test]
         public void MultipleSourcesOneStringLastSource()
@@ -111,12 +111,12 @@ namespace Tests
             localizationManager.RegisterSource(CreateCorrectXmlRepository(FilledXmlFileName));
             localizationManager.RegisterSource(CreateResourceFilesRepository());
             var ruString = localizationManager.GetString(Guid.Parse("2868cf65-417d-4257-8bde-1d5ea318e98a"), new CultureInfo("ru-RU"));
-            Assert.That(ruString, Is.EqualTo("Уникальный идентификатор."));
+            Assert.That(ruString, Is.EqualTo("РЈРЅРёРєР°Р»СЊРЅС‹Р№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ."));
         }
 
         /// <summary>
-        /// Несколько источников данных, в каждом источнике есть локализация по идентификатору,
-        /// должна выбраться строка из первого по приоритету добавления источника.
+        /// РќРµСЃРєРѕР»СЊРєРѕ РёСЃС‚РѕС‡РЅРёРєРѕРІ РґР°РЅРЅС‹С…, РІ РєР°Р¶РґРѕРј РёСЃС‚РѕС‡РЅРёРєРµ РµСЃС‚СЊ Р»РѕРєР°Р»РёР·Р°С†РёСЏ РїРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ,
+        /// РґРѕР»Р¶РЅР° РІС‹Р±СЂР°С‚СЊСЃСЏ СЃС‚СЂРѕРєР° РёР· РїРµСЂРІРѕРіРѕ РїРѕ РїСЂРёРѕСЂРёС‚РµС‚Сѓ РґРѕР±Р°РІР»РµРЅРёСЏ РёСЃС‚РѕС‡РЅРёРєР°.
         /// </summary>
         [Test]
         public void MultipleSourcesMultipleStrings()
@@ -125,18 +125,18 @@ namespace Tests
             localizationManager.RegisterSource(CreateCorrectXmlRepository(FilledXmlFileName));
             localizationManager.RegisterSource(CreateResourceFilesRepository());
             var ruString = localizationManager.GetString(Guid.Parse("a15aa672-3846-4e84-a644-b99feee55205"), new CultureInfo("ru-RU"));
-            Assert.That(ruString, Is.EqualTo("Есть во всех источниках (xml файл)."));
+            Assert.That(ruString, Is.EqualTo("Р•СЃС‚СЊ РІРѕ РІСЃРµС… РёСЃС‚РѕС‡РЅРёРєР°С… (xml С„Р°Р№Р»)."));
         }
 
         /// <summary>
-        /// Один источник данных, две локализации одной строки, одна из них с текущей культурой потока, вторая нет.
-        /// Запрос строки без культуры.
+        /// РћРґРёРЅ РёСЃС‚РѕС‡РЅРёРє РґР°РЅРЅС‹С…, РґРІРµ Р»РѕРєР°Р»РёР·Р°С†РёРё РѕРґРЅРѕР№ СЃС‚СЂРѕРєРё, РѕРґРЅР° РёР· РЅРёС… СЃ С‚РµРєСѓС‰РµР№ РєСѓР»СЊС‚СѓСЂРѕР№ РїРѕС‚РѕРєР°, РІС‚РѕСЂР°СЏ РЅРµС‚.
+        /// Р—Р°РїСЂРѕСЃ СЃС‚СЂРѕРєРё Р±РµР· РєСѓР»СЊС‚СѓСЂС‹.
         /// </summary>
         [Test]
         public void OneSourcesMultipleStringsCurrentThreadCulture()
         {
             var arCurrentCulture = new CultureInfo("ar-AE");
-            Thread.CurrentThread.CurrentCulture = arCurrentCulture; //т.к. каждый тест в своём потоке.
+            Thread.CurrentThread.CurrentCulture = arCurrentCulture; //С‚.Рє. РєР°Р¶РґС‹Р№ С‚РµСЃС‚ РІ СЃРІРѕС‘Рј РїРѕС‚РѕРєРµ.
             Assert.That(CultureInfo.CurrentCulture, Is.EqualTo(arCurrentCulture));
             var localizationManager = new LocalizationManager(_LocalizationManagerLoggerMock);
             localizationManager.RegisterSource(CreateCorrectXmlRepository(FilledXmlFileName));
@@ -145,7 +145,7 @@ namespace Tests
         }
 
         /// <summary>
-        /// Один источник данных. Должен вернуться true.
+        /// РћРґРёРЅ РёСЃС‚РѕС‡РЅРёРє РґР°РЅРЅС‹С…. Р”РѕР»Р¶РµРЅ РІРµСЂРЅСѓС‚СЊСЃСЏ true.
         /// </summary>
         [Test]
         public void OneSourceReturnsTrueOnAdd()
@@ -156,7 +156,7 @@ namespace Tests
         }
 
         /// <summary>
-        /// Два одинаковых источника данных. Должен вернуться false при попытке добавления второго источника.
+        /// Р”РІР° РѕРґРёРЅР°РєРѕРІС‹С… РёСЃС‚РѕС‡РЅРёРєР° РґР°РЅРЅС‹С…. Р”РѕР»Р¶РµРЅ РІРµСЂРЅСѓС‚СЊСЃСЏ false РїСЂРё РїРѕРїС‹С‚РєРµ РґРѕР±Р°РІР»РµРЅРёСЏ РІС‚РѕСЂРѕРіРѕ РёСЃС‚РѕС‡РЅРёРєР°.
         /// </summary>
         [Test]
         public void TwoEqualSourcesReturnFalseOnAdd()
@@ -168,7 +168,7 @@ namespace Tests
         }
 
         /// <summary>
-        /// Два источника данных одного типа, но не равные. Должен вернуться true при попытке добавления второго источника.
+        /// Р”РІР° РёСЃС‚РѕС‡РЅРёРєР° РґР°РЅРЅС‹С… РѕРґРЅРѕРіРѕ С‚РёРїР°, РЅРѕ РЅРµ СЂР°РІРЅС‹Рµ. Р”РѕР»Р¶РµРЅ РІРµСЂРЅСѓС‚СЊСЃСЏ true РїСЂРё РїРѕРїС‹С‚РєРµ РґРѕР±Р°РІР»РµРЅРёСЏ РІС‚РѕСЂРѕРіРѕ РёСЃС‚РѕС‡РЅРёРєР°.
         /// </summary>
         [Test]
         public void TwoNonEqualSameTypeSourcesReturnTrueOnAdd()
@@ -181,7 +181,7 @@ namespace Tests
         }
 
         /// <summary>
-        /// Проверка выброса исключения.
+        /// РџСЂРѕРІРµСЂРєР° РІС‹Р±СЂРѕСЃР° РёСЃРєР»СЋС‡РµРЅРёСЏ.
         /// </summary>
         [Test]
         public void OneSourceThrowsException()
@@ -192,13 +192,13 @@ namespace Tests
             var mockIRepository = new Mock<IRepository>();
             mockIRepository
                 .Setup(x => x.GetLocalizedString(guid, cultureInfo))
-                .Throws(new Exception("Неизвестная ошибка."));
+                .Throws(new Exception("РќРµРёР·РІРµСЃС‚РЅР°СЏ РѕС€РёР±РєР°."));
             localizationManager.RegisterSource(mockIRepository.Object);
             Assert.Throws<LocalizationException>(() => localizationManager.GetString(guid, cultureInfo));
         }
 
         /// <summary>
-        /// Проверка работы LocalizationManager-а со всем типами источников данных.
+        /// РџСЂРѕРІРµСЂРєР° СЂР°Р±РѕС‚С‹ LocalizationManager-Р° СЃРѕ РІСЃРµРј С‚РёРїР°РјРё РёСЃС‚РѕС‡РЅРёРєРѕРІ РґР°РЅРЅС‹С….
         /// </summary>
         [Test, TestCaseSource(nameof(OneSourceOneStringTestCases))]
         public void GetStringFromEverySource(IRepository source, Guid id, CultureInfo cultureInfo, string expected)
@@ -223,7 +223,7 @@ namespace Tests
                 CreateCorrectXmlRepository(FilledXmlFileName),
                 Guid.Parse("6c2c210c-8fd6-449d-980b-97ad6f6362e7"),
                 new CultureInfo("ru-RU"),
-                "Сервис."
+                "РЎРµСЂРІРёСЃ."
             },
         };
 
